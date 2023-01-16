@@ -36,6 +36,9 @@ class build_ext_options:
             e.extra_link_args = link_options.get(
                 self.compiler.compiler_type, link_options["other"]
             )
+            
+        if hasattr(self.compiler, "dll_libraries"):
+            self.compiler.dll_libraries = []
 
 
 class build_ext_subclass(build_ext, build_ext_options):
